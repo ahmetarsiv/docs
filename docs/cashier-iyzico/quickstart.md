@@ -6,7 +6,22 @@ sidebar_position: 4
 
 ## Initializing Subscription via NON-3DS
 
-Merchants can start a subscription by sending the parameters.
+The Iyzico Cashier package allows you to create subscriptions using the NON-3DS payment flow. This flow does not require any additional card authentication, and the subscription is initialized immediately if the card and request are valid.
+
+To create a subscription, call the newSubscription() method on your billable model and provide the subscription details, customer information, billing addresses, and card details.
+
+```php
+$subscription = $user->newSubscription($product->getName(), $paymentPlan->getName())
+    ->create([...]);
+```
+
+### Verifying the Subscription
+
+After creation, you can check if the user is subscribed:
+
+```php
+$user->subscribed($product->getName());
+```
 
 ## Activate Subscription
 
